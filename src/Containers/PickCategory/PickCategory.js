@@ -20,12 +20,15 @@ export const PickCategory = () => {
           <Header
             iconSrc={ArrowBack}
             labelcategory="Choisissez une catégorie"
-            onClick={() => navigate("/")}
+            onClick={() => navigate(-1)}
           />
         </div>
-        {Object.keys(category).map((categoryKey) => (
-          <div className="h-14 mb-4">
-            <ButtonLink label={categoryKey} url={`/home/${categoryKey}`} />
+        {Object.keys(category).map((categoryKey, index) => (
+          <div className="h-14 mb-4" key={categoryKey + index}>
+            <Button
+              label={categoryKey}
+              onClick={() => navigate(`/home/${categoryKey}`)}
+            />
           </div>
         ))}
       </div>

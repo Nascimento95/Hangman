@@ -6,30 +6,42 @@ const alphabet = Array.from({ length: 26 }, (_, i) =>
 );
 
 const Letter = styled.div`
-  /* background: white; */
   opacity: ${(props) => (props.selected ? "0.2" : "1")};
 `;
-export const Letters = ({ word, setWordWhole, wordWhole }) => {
-  console.log(word);
+export const Letters = ({
+  word,
+  setWordWhole,
+  wordWhole,
+  tryGame,
+  setTryGame,
+}) => {
   const handleAddLetter = (e, value) => {
-    const ind = word.split("").findIndex((el) => el.toLowerCase() === value);
-    console.log("====================================");
-    console.log(ind);
-    console.log("====================================");
+    const indices = word.split("").reduce((acc, currentElement, index) => {
+      if (currentElement.toLowerCase() === value) {
+        acc.push(index);
+      }
+      return acc;
+    }, []);
     const newWord = word
       .split("")
       .map((w, index) =>
-        ind === index
+        indices.includes(index)
           ? value.toUpperCase()
           : wordWhole[index] === "_"
           ? "_"
           : w.toUpperCase()
       )
       .join("");
+    const notFoundWord = newWord === wordWhole;
+    if (notFoundWord) {
+      setTryGame((prevTryGame) => prevTryGame - 1);
+    }
+
     setWordWhole(newWord);
   };
+
   return (
-    <div className="grid grid-cols-9 gap-y-5 sm:grid-cols-4 ">
+    <div className="grid grid-cols-9 gap-y-5 sm:grid-cols-4 w-full">
       {alphabet.map((letter) => (
         <Letter
           key={letter}

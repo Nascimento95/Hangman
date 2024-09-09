@@ -6,6 +6,7 @@ export const Header = ({
   iconSrc,
   rightContent = false,
   onClick = () => null,
+  tryGame,
 }) => {
   return (
     <header className="flex items-center justify-between w-full py-6">
@@ -30,7 +31,7 @@ export const Header = ({
       </div>
       {rightContent && (
         <div className="flex items-center">
-          <LifeBar />
+          <LifeBar life={tryGame} />
           <img className="ml-2" src={HeartIcon} alt="heart-icon" />
         </div>
       )}
