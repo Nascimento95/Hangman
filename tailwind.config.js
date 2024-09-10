@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "hanged-pattern": "url('/src/Assets/Images/backgroundHanged.png')",
+        "hanged-pattern": "url('/src/Assets/Images/bg-hanged-new.png')",
+      },
+      fontFamily: {
+        kavoon: ["Kavoon", "sans-serif"],
       },
     },
   },

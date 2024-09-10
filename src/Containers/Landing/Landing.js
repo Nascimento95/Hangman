@@ -8,8 +8,8 @@ export const Landing = () => {
   return (
     <div className="h-screen bg-hanged-pattern bg-cover flex justify-center items-center px-6 py-36">
       <div className="w-full h-full relative flex flex-col  items-center">
-        <div className=" w-full h-full bg-[#2B42B0] rounded-2xl p-3  opacity-75 flex justify-end flex-col">
-          <div className="w-full h-full rounded-2xl bg-gradient-to-t from-[#2B42B0] to-[#07197D] flex justify-center items-center">
+        <div className=" w-full h-full bg-[rgba(43,66,176,0.60)] rounded-2xl p-3   flex justify-end flex-col">
+          <div className="w-full h-full rounded-2xl bg-gradient-to-t from-[rgba(43,66,176,0.50)] to-[rgba(7,25,125,0.50)] flex justify-center items-center">
             <img
               className="hover:opacity-80 cursor-pointer"
               src={Play}
@@ -20,8 +20,8 @@ export const Landing = () => {
         </div>
         <img className="absolute  top-[-55px]" src={Title} alt="title-game" />
 
-        <div className="h-10 absolute w-[90%] bottom-7">
-          <Button label="comment jouer" />
+        <div className="h-14 absolute w-[90%] bottom-7 ">
+          <Button label="comment jouer" onClick={() => console.log("click")} />
         </div>
       </div>
     </div>

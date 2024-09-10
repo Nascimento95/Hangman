@@ -17,7 +17,11 @@ export const Layout = ({ src, titleImg, children, headerSrc, ...props }) => {
             alt="title-game"
           />
         )}
-        <div className="w-full h-full rounded-2xl bg-gradient-to-t from-[rgba(43,66,176,0.75)] to-[rgba(7,25,125,0.75)] flex justify-center items-center">
+
+        <div className="w-full h-full rounded-2xl bg-gradient-to-t from-[rgba(43,66,176,0.75)] to-[rgba(7,25,125,0.75)] flex justify-center items-center px-4 relative ">
+          <h2 className="text-white text-3xl font-bold absolute  top-[60px] text-center font-kavoon px-4">
+            choisi une des options ci-dessous
+          </h2>
           {children}
           {src && (
             <img
