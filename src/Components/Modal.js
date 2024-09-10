@@ -5,8 +5,8 @@ import youWin from "../Assets/Icons/you-win.svg";
 import youLoose from "../Assets/Icons/you-loose.svg";
 import { useNavigate } from "react-router-dom";
 
-export const Modal = ({ win }) => {
-  const ImageHeaderModal = win ? youWin : youLoose;
+export const Modal = ({ win, loose }) => {
+  const ImageHeaderModal = win ? youWin : loose ? youLoose : "";
   const navigate = useNavigate();
 
   return (

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { LifeBar } from "./LifeBar";
 import HeartIcon from "../../Assets/Icons/heart.svg";
+import { useParams } from "react-router-dom";
+import { upperCaseFirstLetter } from "../../Utils/upperCaseFirstLetter";
 export const Header = ({
   labelcategory = "labelcategory",
   iconSrc,
@@ -8,6 +10,12 @@ export const Header = ({
   onClick = () => null,
   tryGame,
 }) => {
+  const { category = "" } = useParams();
+  const categoryUpper = useMemo(
+    () => upperCaseFirstLetter(category),
+    [category]
+  );
+
   return (
     <header className="flex items-center justify-between w-full py-6">
       <div className="flex items-center">
@@ -26,7 +34,9 @@ export const Header = ({
           )}
         </div>
         <div>
-          <span className="text-white text-xs ml-2">{labelcategory}</span>
+          <span className="text-white text-2xl ml-2 font-kavoon ">
+            {categoryUpper}
+          </span>
         </div>
       </div>
       {rightContent && (

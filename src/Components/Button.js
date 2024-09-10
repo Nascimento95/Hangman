@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const StyledButton = styled.div`
   background-color: ${({ variant }) =>
-    variant === "primary" ? "#2663ff" : "#CD7FFE"};
-  padding: 1px;
-  border-radius: 12px;
+    variant === "primary" ? "#2E6AFD" : "#CD7FFE"};
+  padding: 3px;
+  border-radius: 18px;
   flex: 1;
   height: 100%;
   cursor: pointer;
@@ -15,17 +15,17 @@ const StyledButton = styled.div`
 `;
 const InsideButton = styled.div`
   background-color: ${({ variant }) =>
-    variant === "primary" ? "#2E6AFD" : "#CD7FFE"};
+    variant === "primary" ? "#2655DC" : "#CD7FFE"};
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 18px;
   height: 100%;
 `;
 export const Button = ({ label, variant = "primary", ...props }) => {
   return (
     <StyledButton variant={variant} {...props}>
-      <InsideButton variant={variant}>
+      <InsideButton variant={variant} {...props}>
         <span className="text-white font-bold text-lg">{label}</span>
       </InsideButton>
     </StyledButton>

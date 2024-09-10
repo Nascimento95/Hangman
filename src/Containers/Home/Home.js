@@ -9,7 +9,8 @@ export const Home = () => {
   const { category } = useParams();
   const randomIndex = Math.floor(Math.random() * datas[category].length);
   const [findword] = useState(datas[category][randomIndex].toUpperCase());
-  const [tryGame, setTryGame] = useState(3);
+  const [isModal, setIsModal] = useState(false);
+  const [tryGame, setTryGame] = useState(4);
   const [wordWhole, setWordWhole] = useState(
     datas[category][randomIndex]
       .split("")
@@ -24,16 +25,16 @@ export const Home = () => {
 
   const win = useMemo(() => findword === wordWhole, [findword, wordWhole]);
   const loose = useMemo(() => tryGame === 0, [tryGame]);
-  console.log(tryGame);
   return (
     <section className="h-screen w-full bg-hanged-pattern bg-cover px-4 flex flex-col justify-between pb-24 items-center">
       {win ||
-        (loose && (
+        loose ||
+        (isModal && (
           <div className="absolute h-full w-full z-20">
-            <Modal />
+            <Modal win={win} loose={loose} />
           </div>
         ))}
-      <Header rightContent tryGame={tryGame} />
+      <Header rightContent tryGame={tryGame} onClick={() => setIsModal(true)} />
       <LettersFind word={wordWhole} />
       <Letters
         word={findword}
