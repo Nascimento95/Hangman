@@ -5,15 +5,20 @@ import youWin from "../Assets/Icons/you-win.svg";
 import youLoose from "../Assets/Icons/you-loose.svg";
 import { useNavigate } from "react-router-dom";
 
-export const Modal = ({ win, loose }) => {
+export const Modal = ({ win, loose, setIsModal }) => {
   const ImageHeaderModal = win ? youWin : loose ? youLoose : "";
   const navigate = useNavigate();
-
+  const onContinue = () => {
+    if (win || loose) {
+      navigate(0);
+    }
+    setIsModal(false);
+  };
   return (
     <Layout headerSrc={ImageHeaderModal}>
       <div className="w-full opacity-100">
         <div className="h-14 mb-6">
-          <Button label="Continue" onClick={() => navigate(0)} />
+          <Button label="Continue" onClick={onContinue} />
         </div>
         <div className="h-14 mb-6">
           <Button
