@@ -16,6 +16,7 @@ export const Letters = ({
   setTryGame,
 }) => {
   const handleAddLetter = (e, value) => {
+    if (tryGame === 0) return;
     const indices = word.split("").reduce((acc, currentElement, index) => {
       if (currentElement.toLowerCase() === value) {
         acc.push(index);
@@ -41,15 +42,16 @@ export const Letters = ({
   };
 
   return (
-    <div className="grid grid-cols-9 gap-y-5 sm:grid-cols-4 w-full">
+    <div className="flex justify-start flex-wrap gap-x-1 gap-y-5 border-2 sm:gap-x-4 md:gap-y-14">
       {alphabet.map((letter) => (
         <Letter
           key={letter}
-          //   selected
-          className="py-4 rounded-md flex justify-center w-7 items-center bg-slate-50 font-bold text-2xl cursor-pointer hover:opacity-35"
+          className="py-4 rounded-md flex justify-center w-7 items-center bg-slate-50 font-bold text-2xl cursor-pointer hover:opacity-35 md:w-10 md:rounded-xl md:p-8"
           onClick={(e) => handleAddLetter(e, letter)}
         >
-          <span className="text-xs">{letter.toUpperCase()}</span>
+          <span className="font-kavoon text-xs md:text-base">
+            {letter.toUpperCase()}
+          </span>
         </Letter>
       ))}
     </div>
