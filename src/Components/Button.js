@@ -22,11 +22,14 @@ const InsideButton = styled.div`
   border-radius: 18px;
   height: 100%;
 `;
-export const Button = ({ label, variant = "primary", ...props }) => {
+export const Button = ({ label, variant = "primary", icon, ...props }) => {
   return (
     <StyledButton variant={variant} {...props}>
       <InsideButton variant={variant} {...props}>
-        <span className="text-white font-bold text-lg">{label}</span>
+        {icon && <img src={icon} alt="icon" />}
+        <span className="text-white font-bold text-lg font-kavoon">
+          {label}
+        </span>
       </InsideButton>
     </StyledButton>
   );
