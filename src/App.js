@@ -2,6 +2,8 @@ import { Home } from "./Containers/Home/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Landing } from "./Containers/Landing/Landing";
 import { PickCategory } from "./Containers/PickCategory/PickCategory";
+import useSounds from "./Hooks/useSounds";
+import useStoreSound from "./Store/useStoreSound";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  const { BackgroundSound } = useSounds();
+  return (
+    <BackgroundSound>
+      <RouterProvider router={router} />;
+    </BackgroundSound>
+  );
 }
 
 export default App;

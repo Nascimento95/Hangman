@@ -1,22 +1,25 @@
-import React, { useState } from "react";
-import Sound from "react-sound";
+import React, { useEffect, useMemo } from "react";
 import { Button } from "../Components/Button";
 import PlaySoundIcon from "../Assets/Icons/playSound.svg";
 import PauseSoundIcon from "../Assets/Icons/pauseSound.svg";
+import useStoreSound from "../Store/useStoreSound";
 
-const BackgroundSound = ({ isPlaying }) => {
-  return (
-    <>
-      {isPlaying && (
-        <Sound
-          url={require("../sounds/bg-sound.mp3")}
-          playStatus={Sound.status.PLAYING}
-          loop={true}
-          volume={10}
-        />
-      )}
-    </>
+const BackgroundSound = ({ children }) => {
+  const isPlaying = useStoreSound((state) => state.isPlaying);
+  const bgSound = useMemo(
+    () => new Audio(require("../sounds/bg-sound.mp3")),
+    []
   );
+  useEffect(() => {
+    if (isPlaying) {
+      bgSound.play();
+      bgSound.loop = true;
+      bgSound.volume = 0.1;
+    } else {
+      bgSound.pause();
+    }
+  }, [bgSound, isPlaying]);
+  return children;
 };
 const ButtonSound = ({ isPlaying, setIsPlaying }) => {
   const icon = isPlaying ? PauseSoundIcon : PlaySoundIcon;
@@ -30,13 +33,20 @@ const ButtonSound = ({ isPlaying, setIsPlaying }) => {
     </div>
   );
 };
+const handleValidateWord = () => {
+  const audio = new Audio(require("../sounds/valid.mp3"));
+  audio.play();
+};
+const handleWrongWord = () => {
+  const audio = new Audio(require("../sounds/notValid.mp3"));
+  audio.play();
+};
 const useSounds = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   return {
-    BackgroundSound: () => <BackgroundSound isPlaying={isPlaying} />,
-    ButtonSound: () => (
-      <ButtonSound isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-    ),
+    BackgroundSound,
+    ButtonSound,
+    handleValidateWord,
+    handleWrongWord,
   };
 };
 

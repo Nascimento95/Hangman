@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import useSounds from "../../Hooks/useSounds";
 
 const alphabet = Array.from({ length: 26 }, (_, i) =>
   String.fromCharCode(97 + i)
@@ -15,6 +16,7 @@ export const Letters = ({
   tryGame,
   setTryGame,
 }) => {
+  const { handleValidateWord, handleWrongWord } = useSounds();
   const handleAddLetter = (e, value) => {
     if (tryGame === 0) return;
     const indices = word.split("").reduce((acc, currentElement, index) => {
@@ -35,9 +37,11 @@ export const Letters = ({
       .join("");
     const notFoundWord = newWord === wordWhole;
     if (notFoundWord) {
+      handleWrongWord();
       setTryGame((prevTryGame) => prevTryGame - 1);
+      return;
     }
-
+    handleValidateWord();
     setWordWhole(newWord);
   };
 

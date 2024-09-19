@@ -7,6 +7,7 @@ import datas from "../../datas.json";
 import { Modal } from "../../Components/Modal";
 import useSounds from "../../Hooks/useSounds";
 export const Home = () => {
+  const { BackgroundSound } = useSounds();
   const { category } = useParams();
   const randomIndex = Math.floor(Math.random() * datas[category].length);
   const [findword] = useState(datas[category][randomIndex].toUpperCase());
