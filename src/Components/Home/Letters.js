@@ -42,11 +42,11 @@ export const Letters = ({
   };
 
   return (
-    <div className="flex justify-start flex-wrap gap-x-1 gap-y-5 border-2 sm:gap-x-4 md:gap-y-14">
+    <div className="flex justify-start flex-wrap gap-x-1 gap-y-5 sm:gap-x-4 md:gap-y-6  ">
       {alphabet.map((letter) => (
         <Letter
           key={letter}
-          className="py-4 rounded-md flex justify-center w-7 items-center bg-slate-50 font-bold text-2xl cursor-pointer hover:opacity-35 md:w-10 md:rounded-xl md:p-8"
+          className="py-4 rounded-md flex justify-center w-7 items-center bg-slate-50 font-bold text-2xl cursor-pointer hover:opacity-35 md:rounded-xl md:py-6 md:px-7 lg:py-8 lg:px-10"
           onClick={(e) => handleAddLetter(e, letter)}
         >
           <span className="font-kavoon text-xs md:text-base">
