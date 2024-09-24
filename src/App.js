@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Landing } from "./Containers/Landing/Landing";
 import { PickCategory } from "./Containers/PickCategory/PickCategory";
 import useSounds from "./Hooks/useSounds";
-import useStoreSound from "./Store/useStoreSound";
 
 const router = createBrowserRouter([
   {

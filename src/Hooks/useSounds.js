@@ -21,6 +21,7 @@ const BackgroundSound = ({ children }) => {
   }, [bgSound, isPlaying]);
   return children;
 };
+
 const ButtonSound = ({ isPlaying, setIsPlaying }) => {
   const icon = isPlaying ? PauseSoundIcon : PlaySoundIcon;
   return (

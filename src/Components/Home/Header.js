@@ -3,7 +3,6 @@ import { LifeBar } from "./LifeBar";
 import HeartIcon from "../../Assets/Icons/heart.svg";
 import { useParams } from "react-router-dom";
 import { upperCaseFirstLetter } from "../../Utils/upperCaseFirstLetter";
-import useSounds from "../../Hooks/useSounds";
 export const Header = ({
   labelcategory = "labelcategory",
   iconSrc,
@@ -12,9 +11,6 @@ export const Header = ({
   tryGame,
 }) => {
   const { category = "" } = useParams();
-  // todo quand on clique sur les btn lettre sa re render car le trygame change mettre aussi le state de play directement la et le faire passer car le hook est call 2 fois
-  // const { ButtonSound, BackgroundSound } = useSounds();
-
   const categoryUpper = useMemo(
     () => upperCaseFirstLetter(category),
     [category]

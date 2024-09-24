@@ -3,10 +3,13 @@ import { Layout } from "./Layout";
 import { Button } from "./Button";
 import youWin from "../Assets/Icons/you-win.svg";
 import youLoose from "../Assets/Icons/you-loose.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useStoreSound from "../Store/useStoreSound";
 
 export const Modal = ({ win, loose, setIsModal }) => {
   const ImageHeaderModal = win ? youWin : loose ? youLoose : "";
+  const setStopSound = useStoreSound((state) => state.setStopSound);
+  const { category = "" } = useParams();
   const navigate = useNavigate();
   const onContinue = () => {
     if (win || loose) {
@@ -23,14 +26,21 @@ export const Modal = ({ win, loose, setIsModal }) => {
         <div className="h-14 mb-6">
           <Button
             label="New Category"
-            onClick={() => navigate("/pick-category")}
+            onClick={() =>
+              navigate("/pick-category", {
+                state: { goback: category },
+              })
+            }
           />
         </div>
         <div className="h-14 mb-6 ">
           <Button
             variant="secondary"
             label="Quit Game"
-            onClick={() => navigate("/")}
+            onClick={() => {
+              setStopSound();
+              navigate("/");
+            }}
           />
         </div>
       </div>
