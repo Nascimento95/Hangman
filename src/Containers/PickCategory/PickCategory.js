@@ -19,29 +19,29 @@ export const PickCategory = () => {
     navigate("/");
   };
   return (
-    <>
-      <div className="bg-hanged-pattern bg-cover h-screen px-6">
-        <div className="mb-8">
+    <div className="bg-hanged-pattern bg-cover h-screen px-6">
+      <div className="mb-8 flex justify-center">
+        <div className="w-full max-w-[1124px] md:px-12 lg:px-32">
           <Header
             iconSrc={ArrowBack}
             labelcategory="Choisissez une catégorie"
             onClick={handleGoBack}
           />
         </div>
-        <div className="flex flex-col items-center">
-          {Object.keys(category).map((categoryKey, index) => (
-            <div
-              className="h-14 mb-4 w-full md:max-w-[50%] 2xl:max-w-[30%]"
-              key={categoryKey + index}
-            >
-              <Button
-                label={categoryKey}
-                onClick={() => navigate(`/home/${categoryKey}`)}
-              />
-            </div>
-          ))}
-        </div>
       </div>
-    </>
+      <div className="flex flex-col items-center">
+        {Object.keys(category).map((categoryKey, index) => (
+          <div
+            className="h-14 mb-4 w-full md:max-w-[50%] 2xl:max-w-[30%]"
+            key={categoryKey + index}
+          >
+            <Button
+              label={categoryKey}
+              onClick={() => navigate(`/home/${categoryKey}`)}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };

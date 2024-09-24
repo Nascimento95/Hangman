@@ -6,14 +6,14 @@ import youLoose from "../Assets/Icons/you-loose.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import useStoreSound from "../Store/useStoreSound";
 
-export const Modal = ({ win, loose, setIsModal }) => {
+export const Modal = ({ win, loose, setIsModal, resetGame }) => {
   const ImageHeaderModal = win ? youWin : loose ? youLoose : "";
   const setStopSound = useStoreSound((state) => state.setStopSound);
   const { category = "" } = useParams();
   const navigate = useNavigate();
   const onContinue = () => {
     if (win || loose) {
-      navigate(0);
+      resetGame();
     }
     setIsModal(false);
   };

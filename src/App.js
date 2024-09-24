@@ -23,7 +23,7 @@ function App() {
   const { BackgroundSound } = useSounds();
   return (
     <BackgroundSound>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </BackgroundSound>
   );
 }
