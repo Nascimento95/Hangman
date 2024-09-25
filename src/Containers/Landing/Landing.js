@@ -26,7 +26,10 @@ export const Landing = () => {
         <img className="absolute  top-[-55px]" src={Title} alt="title-game" />
 
         <div className="h-14 absolute w-[90%] bottom-7 sm:w-[90%] md:w-[90%] lg:w-[40%]">
-          <Button label="comment jouer" onClick={() => console.log("click")} />
+          <Button
+            label="comment jouer"
+            onClick={() => navigate("/explanation")}
+          />
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Landing } from "./Containers/Landing/Landing";
 import { PickCategory } from "./Containers/PickCategory/PickCategory";
 import useSounds from "./Hooks/useSounds";
+import Explanation from "./Containers/Explanation/Explanation";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/pick-category",
     element: <PickCategory />,
+  },
+  {
+    path: "/explanation",
+    element: <Explanation />,
   },
 ]);
 
