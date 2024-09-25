@@ -39,8 +39,6 @@ export const Header = ({
           </span>
         </div>
       </div>
-      {/* <ButtonSound />
-      <BackgroundSound /> */}
       {rightContent && (
         <div className="flex items-center">
           <LifeBar life={tryGame} />

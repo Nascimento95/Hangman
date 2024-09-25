@@ -1,14 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import { Header } from "../../Components/Home/Header";
+import ArrowBack from "../../Assets/Icons/arrow-back.svg";
+import { useNavigate } from "react-router-dom";
+
 const ScrollContaiber = styled.div`
   height: 100vh;
   overflow-y: scroll;
   scrollbar-width: none;
 `;
 const Explanation = () => {
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate("/");
+  };
   return (
     <div className="bg-hanged-pattern bg-cover h-screen px-6">
-      <ScrollContaiber className=" h-full flex-col justify-center items-center overflow-scroll py-20 ">
+      <div className="w-full">
+        <Header
+          iconSrc={ArrowBack}
+          labelcategory="Choisissez une catégorie"
+          onClick={handleGoBack}
+        />
+      </div>
+      <ScrollContaiber className=" h-full flex-col justify-center items-center overflow-scroll ">
         <h1 className="text-2xl font-bold text-white lg:text-4xl">
           Comment jouer au jeu du Pendu
         </h1>
