@@ -53,7 +53,7 @@ export const Letters = ({
           className="py-4 rounded-md flex justify-center w-7 items-center bg-slate-50 font-bold text-2xl cursor-pointer hover:opacity-35 md:rounded-xl md:py-6 md:px-7 lg:py-8 lg:px-10"
           onClick={(e) => handleAddLetter(e, letter)}
         >
-          <span className="font-kavoon text-xs md:text-base">
+          <span className="font-kavoon text-xs md:text-base lg:text-2xl">
             {letter.toUpperCase()}
           </span>
         </Letter>

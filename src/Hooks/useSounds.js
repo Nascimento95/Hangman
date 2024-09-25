@@ -11,6 +11,17 @@ const BackgroundSound = ({ children }) => {
     []
   );
   useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        bgSound.pause();
+        return;
+      }
+      if (isPlaying && !document.hidden) {
+        bgSound.play();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     if (isPlaying) {
       bgSound.play();
       bgSound.loop = true;
@@ -18,6 +29,10 @@ const BackgroundSound = ({ children }) => {
     } else {
       bgSound.pause();
     }
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      bgSound.pause(); // Pause aussi la musique si le composant est démonté
+    };
   }, [bgSound, isPlaying]);
   return children;
 };

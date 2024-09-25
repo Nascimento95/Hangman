@@ -16,7 +16,7 @@ export const LettersFind = ({ word = "united kingdom" }) => {
           return (
             <div key={index} className="rounded-lg bg-[#3F74FD] md:rounded-xl">
               <div className="mx-1 my-1 px-1 py-2 bg-[#2464FD]  rounded-sm md:rounded-xl md:p-6 lg:py-8 lg:px-10">
-                <span className="text-white font-black font-kavoon text-base p-1 md:text-xl">
+                <span className="text-white font-black font-kavoon text-base p-1 md:text-xl lg:text-3xl ">
                   {letter}
                 </span>
               </div>

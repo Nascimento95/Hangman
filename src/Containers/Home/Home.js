@@ -31,6 +31,7 @@ export const Home = () => {
 
   const win = useMemo(() => findword === wordWhole, [findword, wordWhole]);
   const loose = useMemo(() => tryGame === 0, [tryGame]);
+  // il y a un problème ici depuis ça quand tu valide une lettre sa change  le findword
   const resetGame = useCallback(() => {
     setIsModal(false);
     setTryGame(4);
